@@ -1,0 +1,6 @@
+out
+.idea/*
+test
+META-INF/
+*.log
+*.iml
