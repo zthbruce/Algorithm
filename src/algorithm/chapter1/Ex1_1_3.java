@@ -1,11 +1,11 @@
 package algorithm.chapter1;
 
 import java.util.Scanner;
-public class Ex03 {
+public class Ex1_1_3 {
     public static void main(String[] args){
         // as
         if(args == null){
-            throw new NullPointerException("Params Error");
+            throw new NullPointerException("Params Can Not be NULL");
         }
         // init
         Scanner sc = new Scanner(System.in);

@@ -1,6 +1,6 @@
 package algorithm.chapter1;
 
-public class Ex02 {
+public class Ex1_1_2 {
     public static void main(String[] args) {
         System.out.println((1 + 2.236) / 2);
         System.out.println( 1 + 2 + 3 + 4.0);
