@@ -1,4 +1,4 @@
-package algorithm.chapter1;
+package algorithm.chapter1.section1;
 
 import java.util.Scanner;
 public class Ex1_1_3 {

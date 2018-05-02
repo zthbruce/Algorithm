@@ -1,4 +1,4 @@
-package algorithm.chapter1;
+package algorithm.chapter1.section2;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,4 +1,4 @@
-package algorithm.chapter1;
+package algorithm.chapter1.section2;
 
 public class Ex1_1_8 {
     // 考察字符型和整型的相互转换转换

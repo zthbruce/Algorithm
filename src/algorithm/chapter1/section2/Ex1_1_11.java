@@ -1,4 +1,4 @@
-package algorithm.chapter1;
+package algorithm.chapter1.section2;
 
 public class Ex1_1_11 {
     // 打印二维数组
