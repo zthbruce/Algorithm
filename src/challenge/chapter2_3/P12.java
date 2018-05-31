@@ -73,21 +73,23 @@ public class P12 {
 
         // 动态规划
         // 其实，暴力搜索里面已经涉及到状态转移方程
-        // dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])
+        // dp[i+1][j] = max(dp[i][j], dp[i][j-w[i]] + v[i])，这样表述与索引保持一致
         // 其中dp[0][j] = 0，dp[i][0] = 0; 便于逻辑统一
         // 使用二维数组的方式空间占用过大，实际上没必要，只需要观察状态转移方程，
         // 当前层i的状态依赖上一层i-1的状态，所以本质上只需要一个一维数组即可
-        // 只是更新时注意从后往前更新，因为从前往后的方式会导致dp[i-1][j-w[i]]被更新
+        // 只是更新时注意从后往前更新，因为从前往后的方式会导致dp[i][j-w[i]]被更新
 
         // init
         int i, j;
         int[] dp = new int[W+1]; // 会初始化为0的情况
         for(i = 0; i < w.length; i++){
-            for(j = W; j >= 0; j--){
-                if(w[i] <= j){
-                    dp[j] = Math.max(dp[j], dp[j-w[i]] + v[i]);
-                }
+            for(j = W; j >= w[i]; j--){ // 注意循环结束条件，写法很厉害，学习了
+                dp[j] = Math.max(dp[j], dp[j-w[i]] + v[i]);
             }
+            for(int k = 0; k <= W; k++){
+                System.out.print(dp[k] + " ");
+            }
+            System.out.println();
         }
         return dp[W];
 

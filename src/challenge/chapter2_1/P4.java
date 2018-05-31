@@ -116,11 +116,6 @@ public class P4 {
 
     public static void main(String[] args) {
         int k = 7;
-//        int size = 50;
-//        int[] arr = new int[size];
-//        for(int i = 0; i < size; i++){
-//            arr[i] = Util.randomInt(0, 10000);
-//        }
         int[] arr = {1, 2, 3, 4, 5};
         System.out.println(sum(arr, k));
         System.out.println(sumCount(arr, k));

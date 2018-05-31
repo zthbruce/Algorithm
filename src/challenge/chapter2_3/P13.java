@@ -19,9 +19,10 @@ public class P13 {
      * 只要想清楚这俩问题，就解决了问题
      *
      * 状态定义：dp[i][j] 表示什么？s1...si 和 t1....tj之间的最长公共子串长度
-     * 状态转移方程：dp[i][j] = si == tj? dp[i-1][j-1]+1 : max(dp[i-1][j], dp[i][j-1])
-     * 状态转移方程中值得注意的是：si == tj时，本来应该是max(dp[i-1][j-1]+1, dp[i-1][j], dp[i][j-1])
-     * 但往深了一想即可知：dp[i-1][j] <= dp[i-1][j-1]+1, dp[i][j-1] <= dp[i-1][j-1] + 1
+     * 状态转移方程：dp[i+1][j+1] = si == tj? dp[i][j]+1 : max(dp[i][j+1], dp[i+1][j])
+     * 注意此处既要更新本层的元素会影响同一列的取值，所以不能使用数组复用来减少空间复杂度
+     * 状态转移方程中值得注意的是：si == tj时，本来应该是max(dp[i][j-1]+1, dp[i][j+1], dp[i+1][j])
+     * 但往深了一想即可知：dp[i][j+1] <= dp[i][j]+1, dp[i+1][j] <= dp[i][j] + 1
      * 所以代码已经确定
      */
 
@@ -34,16 +35,13 @@ public class P13 {
         int sLen = s.length();
         int tLen = t.length();
         int[][] dp = new int[sLen+1][tLen+1];
-        for(i = 0; i <= sLen; i++){
-            for(j = 0; j <= tLen; j++){
-                if(i == 0 || j == 0){
-                    dp[i][j] = 0;
-                }else{
-                    dp[i][j] = s.charAt(i-1) == t.charAt(j-1)
-                            ? dp[i-1][j-1] + 1
-                            : Math.max(dp[i-1][j], dp[i][j-1]);
-                }
+        for(i = 0; i < sLen; i++){
+            for(j = 0; j < tLen; j++){
+                    dp[i+1][j+1] = s.charAt(i) == t.charAt(j)
+                            ? dp[i][j] + 1
+                            : Math.max(dp[i][j+1], dp[i+1][j]);
             }
+
         }
         return dp[sLen][tLen]; // 最终结果
     }
